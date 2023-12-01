@@ -1,4 +1,6 @@
 from turtle import Turtle
+import random
+
 
 class Ball(Turtle):
 
@@ -8,22 +10,31 @@ class Ball(Turtle):
         self.goto(0,0)
         self.penup()
         self.color("blue")
-        self.x_move = 3
-        self.y_move = 3
+        self.ball_speed = 2
 
     def move(self):
-        x_cor = self.xcor() + self.x_move
-        y_cor = self.ycor() + self.y_move
-        self.goto(x_cor, y_cor)
-
+        # x_cor = self.xcor() + self.x_move
+        # y_cor = self.ycor() + self.y_move
+        # self.goto(x_cor, y_cor)
+        if self.xcor() == 0:
+            self.setheading(random.randint(-45, 45))
+        self.forward(self.ball_speed)
 
     def refresh(self):
-        self.goto(0,0)
+        if self.xcor() < 0:
+            self.goto(0, 0)
+            self.setheading(random.randint(-45, 45))
+        elif self.xcor() > 0:
+            self.goto(0, 0)
+            self.setheading(random.randint(135, 225))
+            self.forward(1)
+        self.ball_speed = 2
 
-    def bounce(self):
-        self.y_move *= -1
+    def increase_speed(self):
+        self.ball_speed += 0.5
 
+    def bounce_wall(self):
+        self.setheading(360 - self.heading())
 
     def paddle_bounce(self):
-        self.x_move *= -1
-
+        self.setheading(180 - self.heading())

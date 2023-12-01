@@ -1,5 +1,6 @@
 from turtle import Turtle
 
+
 class Paddle(Turtle):
 
     def __init__(self, player):
@@ -9,10 +10,17 @@ class Paddle(Turtle):
         self.color("white")
         self.penup()
         self.setheading(90)
+        self.player = player
         self.shapesize(stretch_len=5, stretch_wid=1)
         if player == 'left':
             self.goto(self.positions[0])
         elif player == 'right':
+            self.goto(self.positions[1])
+
+    def refresh(self):
+        if self.player == 'left':
+            self.goto(self.positions[0])
+        elif self.player == 'right':
             self.goto(self.positions[1])
 
     def move_up(self):
