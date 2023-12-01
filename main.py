@@ -29,10 +29,10 @@ paddle_right = Paddle('right')
 ball = Ball()
 
 screen.listen()
-screen.onkey(key='w', fun=paddle_left.move_up)
-screen.onkey(key='s', fun=paddle_left.move_down)
-screen.onkey(key='Up', fun=paddle_right.move_up)
-screen.onkey(key='Down', fun=paddle_right.move_down)
+screen.onkeypress(key='w', fun=paddle_left.move_up)
+screen.onkeypress(key='s', fun=paddle_left.move_down)
+screen.onkeypress(key='Up', fun=paddle_right.move_up)
+screen.onkeypress(key='Down', fun=paddle_right.move_down)
 
 scoreboard = Scoreboard()
 
